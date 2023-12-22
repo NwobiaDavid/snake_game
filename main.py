@@ -4,12 +4,12 @@ import random
 
 GAME_WIDTH = 1000
 GAME_HEIGHT = 700
-SPEED = 60
+SPEED = 80
 SPACE_SIZE = 50
-BACKGROUND_COLOUR = 'white'
+BACKGROUND_COLOUR = 'black'
 BODY_PARTS = 3
-SNAKE_COLOUR = 'red'
-FOOD_COLOUR = 'green'
+SNAKE_COLOUR = '#11b83d'
+FOOD_COLOUR = '#db3425'
 
 class Snake:
     def __init__(self):
