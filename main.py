@@ -83,6 +83,17 @@ def change_direction(new_direction):
             direction = new_direction
 
 
+def restart_game(event):
+    global score, direction
+    score = 0
+    direction = 'down'
+    label.config(text="Score: {}".format(score))
+    canvas.delete(ALL)
+    snake = Snake()
+    food = Food()
+    window.after(SPEED, next_turn, snake, food)
+
+
 def check_collisions(snake):
     x, y =snake.coordinates[0]
 
@@ -99,6 +110,9 @@ def game_over():
     canvas.delete(ALL)
     canvas.create_text(canvas.winfo_width()/2, canvas.winfo_height()/2,
                        font=('consolas', 70), text='Game Over', fill='red',
+                       tags='gameover')
+    canvas.create_text(canvas.winfo_width() / 2, canvas.winfo_height() / 2 + 100,
+                       font=('consolas', 20), text='Press "R" to restart', fill='white',
                        tags='gameover')
 
 
@@ -132,6 +146,7 @@ window.bind('<Left>', lambda event: change_direction('left'))
 window.bind('<Right>', lambda event: change_direction('right'))
 window.bind('<Up>', lambda event: change_direction('up'))
 window.bind('<Down>', lambda event: change_direction('down'))
+window.bind('<R>', restart_game)
 
 snake = Snake()
 food = Food()
